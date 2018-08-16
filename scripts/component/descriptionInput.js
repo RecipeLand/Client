@@ -1,6 +1,6 @@
 Vue.component('description-input', {
     template: `<div class="card w-100">
-                 <h5 class="card-header">Make sure ur recipe isn't shit</h5>
+                 <h5 class="card-header">Make sure ur recipe is legit and delicious</h5>
                   <div class="card-body">
                   <form>
                     <div class="form-group">
@@ -26,7 +26,8 @@ Vue.component('description-input', {
                   </form>
                   </div>
                   <div class="card-footer">
-                    <button @click="submit()">Submit Recipe</button>
+                    <button @click.prevent="submit()">Submit Recipe</button>
+                    <button @click.prevent="home()">Cancel</button>
                   </div>
                </div>`,
     methods: {
@@ -47,15 +48,21 @@ Vue.component('description-input', {
                 axios.post('http://localhost:3000/recipe/create', recipeObj)
                 .then((result) => {
                     console.log(result.data)
-                    alert('succesfully posted recipe')
+                    swal('succes', 'succesfully posted Recipe', 'success')
+                    setTimeout(function(){ location.replace("index.html") }, 2000);
                 })
                 .catch((err) => {
-                    console.log(err, 'err')
+                    swal('Opps', 'something went terrible wrong, inputs must be filled', 'warning')
+                    console.log(err, "err")
                 })
             })
             .catch((err) => {
+                swal('Opps', 'something went terrible wrong, inputs must be filled', 'warning')
                 console.log(err, "err")
             })
+        },
+        home () {
+            location.replace('index.html')
         },
         send ( e ) {
             this.imgUrl = e.target.files[0] 
