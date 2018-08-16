@@ -26,7 +26,8 @@ Vue.component('description-input', {
                   </form>
                   </div>
                   <div class="card-footer">
-                    <button @click="submit()">Submit Recipe</button>
+                    <button @click.prevent="submit()">Submit Recipe</button>
+                    <button @click.prevent="home()">Cancel</button>
                   </div>
                </div>`,
     methods: {
@@ -48,6 +49,7 @@ Vue.component('description-input', {
                 .then((result) => {
                     console.log(result.data)
                     alert('succesfully posted recipe')
+                    location.replace("index.html")
                 })
                 .catch((err) => {
                     console.log(err, 'err')
@@ -56,6 +58,9 @@ Vue.component('description-input', {
             .catch((err) => {
                 console.log(err, "err")
             })
+        },
+        home () {
+            location.replace('index.html')
         },
         send ( e ) {
             this.imgUrl = e.target.files[0] 

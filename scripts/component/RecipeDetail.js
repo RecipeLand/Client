@@ -10,7 +10,7 @@ Vue.component('recipe-detail', {
           <footer class="blockquote-footer mb-2">Created by: <i>{{ recipe.user }}</i></footer>
         </div>
         <div class="card-footer">
-          <a class="btn btn-primary" style="color: white">Edit</a>
+          <a class="btn btn-primary" @click="editRecipe( recipe._id )" style="color: white">Edit</a>
           <a class="btn btn-danger" style="color: white">Delete</a>
         </div>
       </div>
@@ -25,5 +25,13 @@ Vue.component('recipe-detail', {
       </div>
     </div>
   </div>
-  `
-})
+  `,
+  methods: {
+    editRecipe (recipeID) {
+      console.log(recipeID)
+      let url = `editRecipe.html?${recipeID}`
+      location.replace(url)
+    }
+  }
+}
+)
