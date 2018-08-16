@@ -1,0 +1,14 @@
+.jumbotron {
+    text-align: center;
+    background-color: #C21807;
+    color: white;
+}
+
+.card-header {
+    text-align: center;
+}
+
+#okayButton {
+    background-color: #C21807;
+    color: white;
+}
