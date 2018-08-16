@@ -44,7 +44,7 @@ Vue.component('edit-recipe',{
         }
     },
     mounted () {
-        axios.get(`http://localhost:3000/recipe/find/${this.id}`)
+        axios.get(`https://recipeland.setiaanggraeni.co/recipe/find/${this.id}`)
         .then((result) => {
             let data = result.data[0]
             this.recipeObj = data
@@ -69,7 +69,7 @@ Vue.component('edit-recipe',{
             let formData = new FormData()
             formData.append('image', this.imgUrl)
             console.log(formData)
-            axios.post('http://localhost:3000/recipe/upload', formData)
+            axios.post('https://recipeland.setiaanggraeni.co/recipe/upload', formData)
             .then((result) => {
                 let description = CKEDITOR.instances.editdescription.getData()
                 let thumbnail = result.data.link
@@ -80,7 +80,7 @@ Vue.component('edit-recipe',{
                     description: description,
                     user: this.user
                 }
-                let url = `http://localhost:3000/recipe/edit/${this.id}`
+                let url = `https://recipeland.setiaanggraeni.co/recipe/edit/${this.id}`
                 axios.put(url, updateObj)
                 .then((result) => {
                     console.log(result.data)

@@ -33,7 +33,7 @@ Vue.component('recipe-detail', {
       location.replace(url)
     },
     deleteRecipe (recipeID) {
-      let url = `http://localhost:3000/recipe/delete/${recipeID}`
+      let url = `https://recipeland.setiaanggraeni.co/recipe/delete/${recipeID}`
       axios.delete(url)
       .then((result) => {
         console.log((result.data))
