@@ -35,7 +35,7 @@ Vue.component('recipe-list', {
         source: imgUrl,
         caption
       }
-      axios.post('http://localhost:3000/tumblr/picture', inputObj)
+      axios.post('https://recipeland.setiaanggraeni.co/tumblr/picture', inputObj)
       .then((result) => {
         console.log(result.data)
         swal('success', 'succesfully posted to our tumblr page', 'success')

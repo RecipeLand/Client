@@ -8,6 +8,5 @@ var app3 = new Vue({
         let url = window.location.href
         let id = url.split('?')[1]
         this.recipeId = id
-        console.log(this.recipeId)
     }
   })

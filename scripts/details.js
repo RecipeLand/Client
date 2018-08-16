@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000'
+const BASE_URL = 'https://recipeland.setiaanggraeni.co'
 const recipeId = window.location.href.split('?')[1]
 
 new Vue({

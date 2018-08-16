@@ -35,7 +35,7 @@ Vue.component('description-input', {
             let description = CKEDITOR.instances.wysiwyg.getData()
             let formData = new FormData()
             formData.append('image', this.imgUrl)
-            axios.post('http://localhost:3000/recipe/upload', formData)
+            axios.post('https://recipeland.setiaanggraeni.co/recipe/upload', formData)
             .then((result) => {
                 let thumbnail = result.data.link
                 let recipeObj = {
@@ -45,7 +45,7 @@ Vue.component('description-input', {
                     description: description,
                     user: this.user
                 }
-                axios.post('http://localhost:3000/recipe/create', recipeObj)
+                axios.post('https://recipeland.setiaanggraeni.co/recipe/create', recipeObj)
                 .then((result) => {
                     console.log(result.data)
                     swal('succes', 'succesfully posted Recipe', 'success')
