@@ -23,7 +23,7 @@ Vue.component('recipe-list', {
   },
   mounted () {
     let location = window.location.href
-    let twitterLink = `https://twitter.com/intent/tweet?text=Recipe:%20${this.recipe.title}%20Visit%20${location}`
+    let twitterLink = `https://twitter.com/intent/tweet?text=Recipe:%20${this.recipe.title}%20Visit%20${location}%20IMAGE%20-${this.recipe.imgUrl}`
     this.tweet = twitterLink
     // console.log(this.tweet)
   },
