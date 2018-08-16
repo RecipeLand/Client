@@ -9,7 +9,7 @@ Vue.component('description-input', {
                     </div>
                     <div class="form-group">
                       <label for="exampleFormControlSelect1">Thumbnail Image</label>
-                      <input placeholder="image url" v-model="imgUrl" id="exampleFromControlSelect1" class="form-control"></input>
+                      <input type="file" v-on:change="send($event)" id="exampleFromControlSelect1" class="form-control"></input>
                     </div>
                     <div class="form-group">
                       <label for="wysiwyg">Description</label>
@@ -32,23 +32,33 @@ Vue.component('description-input', {
     methods: {
         submit () {
             let description = CKEDITOR.instances.wysiwyg.getData()
-            let recipeObj = {
-                title: this.title,
-                imgUrl: this.imgUrl,
-                description,
-                user: this.user
-            }
-
-            console.log(recipeObj)
-            axios.post('http://localhost:3000/recipe/create', recipeObj)
+            let formData = new FormData()
+            formData.append('image', this.imgUrl)
+            axios.post('http://localhost:3000/recipe/upload', formData)
             .then((result) => {
-                console.log(result.data)
-                alert("succesfully posted recipe")
+                let thumbnail = result.data.link
+                let recipeObj = {
+                    title: this.title,
+                    imgUrl: thumbnail,
+                    category: this.category,
+                    description: description,
+                    user: this.user
+                }
+                axios.post('http://localhost:3000/recipe/create', recipeObj)
+                .then((result) => {
+                    console.log(result.data)
+                    alert('succesfully posted recipe')
+                })
+                .catch((err) => {
+                    console.log(err, 'err')
+                })
             })
             .catch((err) => {
-                console.log(err)
-                alert("oops something went wrong")
+                console.log(err, "err")
             })
+        },
+        send ( e ) {
+            this.imgUrl = e.target.files[0] 
         }
     },
     data () {
