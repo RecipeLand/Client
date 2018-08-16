@@ -83,17 +83,18 @@ Vue.component('edit-recipe',{
                 let url = `http://localhost:3000/recipe/edit/${this.id}`
                 axios.put(url, updateObj)
                 .then((result) => {
-                    alert('success')
-                    location.replace('index.html')
                     console.log(result.data)
+                    swal('succes', 'succesfully updated recipe', 'success')
+                    setTimeout(function(){ location.replace("index.html") }, 2000);
                 })
                 .catch((err) => {
-                    alert('oops something went wrong')
-                    console.log(err, 'err')
+                    swal('Opps', 'something went terrible wrong, inputs must be filled', 'warning')
+                    console.log(err, "err")
                 })
             })
             .catch((err) => {
-                console.log("err", err)
+                swal('Opps', 'something went terrible wrong, inputs must be filled', 'warning')
+                console.log(err, "err")
             })
         }
     }

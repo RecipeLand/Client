@@ -11,7 +11,7 @@ Vue.component('recipe-detail', {
         </div>
         <div class="card-footer">
           <a class="btn btn-primary" @click="editRecipe( recipe._id )" style="color: white">Edit</a>
-          <a class="btn btn-danger" style="color: white">Delete</a>
+          <a class="btn btn-danger" @click="deleteRecipe( recipe._id )" style="color: white">Delete</a>
         </div>
       </div>
     </div>
@@ -31,6 +31,19 @@ Vue.component('recipe-detail', {
       console.log(recipeID)
       let url = `editRecipe.html?${recipeID}`
       location.replace(url)
+    },
+    deleteRecipe (recipeID) {
+      let url = `http://localhost:3000/recipe/delete/${recipeID}`
+      axios.delete(url)
+      .then((result) => {
+        console.log((result.data))
+        swal('succes', 'succesfully deleted Recipe', 'success')
+        setTimeout(function(){ location.replace("index.html") }, 2000);
+      })
+      .catch((err) => {
+        swal('Opps', 'something went terrible wrong, failed to delete', 'warning')
+        console.log(err, "err")
+      })
     }
   }
 }

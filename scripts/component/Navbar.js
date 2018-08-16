@@ -2,7 +2,7 @@ Vue.component('navbar', {
   props: ['login'],
   template: `
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #C21807">
-    <a href="/index.html" class="navbar-brand">RecipeLand</a>
+    <a href="index.html" class="navbar-brand">RecipeLand</a>
 
     <div class="collapse navbar-collapse">
       <form class="form-inline ml-auto my-2 my-lg-0">
