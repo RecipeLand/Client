@@ -1,26 +1,27 @@
 const BASE_URL = 'http://localhost:3000'
+const recipeId = window.location.href.split('?')[1]
 
 new Vue({
   el: '#app',
   data: {
     login: true,
-    recipes: []
+    recipe: ''
   },
   created() {
     axios({
       method: 'get',
-      url: `${BASE_URL}/recipe/`,
+      url: `${BASE_URL}/recipe/find/${recipeId}`,
     })
     .then(response => {
-      console.log(response.data)
-      this.recipes = response.data
+      console.log('success -->',response.data)
+      this.recipe = response.data[0]
     })
     .catch(err => {
       console.log(err.response)
     })
   },
   methods: {
-    addRecipe() {},
-    search() {}
+    editRecipe() {},
+    deleteRecipe() {}
   }
 })
