@@ -26,8 +26,8 @@ Vue.component('description-input', {
                   </form>
                   </div>
                   <div class="card-footer">
-                    <button @click.prevent="submit()">Submit Recipe</button>
-                    <button @click.prevent="home()">Cancel</button>
+                    <button class="btn" id="okayButton" @click.prevent="submit()">Submit Recipe</button>
+                    <button class="btn btn-outline-danger" id="cancelButton" @click.prevent="home()">Cancel</button>
                   </div>
                </div>`,
     methods: {

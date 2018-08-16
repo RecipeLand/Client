@@ -28,8 +28,8 @@ Vue.component('edit-recipe',{
        </form>
      </div>
      <div class="card-footer">
-       <button @click.prevent="save()">Save Changes</button>
-       <button @click.prevent="home()">Cancel</button>
+       <button class="btn" id="okayButton" @click.prevent="save()">Save Changes</button>
+       <button class="btn btn-outline-danger" @click.prevent="home()">Cancel</button>
      </div>
     </div>
     `,
