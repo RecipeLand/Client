@@ -12,27 +12,21 @@
           integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" 
           crossorigin="anonymous">
   </script>
-  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-  <title>Home</title>
+  <title>Details</title>
 </head>
 <body>
   <div id="app">
-    <navbar :login="login"></navbar>
-
+    <navbar :login=login></navbar>
     <div class="container" style="max-width: 970px; margin-top: 80px;">
-      <div class="row">
-        <recipe-list
-          v-for="(recipe, index) in recipes"
-          :key="index"
-          :recipe="recipe">
-        </recipe-list>
-      </div>
+      <recipe-detail :recipe="recipe"></recipe-detail>
     </div>
   </div>
+
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
   <script src="scripts/component/Navbar.js"></script>
-  <script src="scripts/component/RecipeList.js"></script>
-  <script src="scripts/index.js"></script>
+  <script src="scripts/component/RecipeDetail.js"></script>
+  <script src="scripts/details.js"></script>
 </body>
 </html>
